@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="システムエンジニア 黒﨑日都美のポートフォリオ / Portfolio of Hitomi Kurosaki, Systems Engineer">
+<title>黒﨑日都美 Portfolio</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Red+Hat+Display:wght@400;500;700&display=swap">
+<style>
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+/* Layout: generous white space, left-aligned column; small wide-tracked English label above a large Japanese heading; one dark band for Works. */
+:root {
+  --bg: #ffffff;
+  --band: #f3f5f8;
+  --ink: #0b2236;
+  --text: #24323f;
+  --muted: #8794a3;
+  --line: #dde3ea;
+  --card: #f4f6f9;
+  --btn: #1c2a44;
+  --btn-ink: #ffffff;
+  --accent: #2f7f8f;
+  --dark: #05080f;
+  --dark-ink: #eef1f5;
+  --dark-muted: #9aa6b5;
+  --dark-card: #f4f6f9;
+  --dark-card-ink: #0b2236;
+  --ghost: rgba(11, 34, 54, .05);
+  --f-en: "Red Hat Display", "Noto Sans JP", system-ui, sans-serif;
+  --f-jp: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+  --wrap: 1040px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0c1119; --band: #121924; --ink: #e9eef4; --text: #c6cfda; --muted: #7f8c9c;
+    --line: #253041; --card: #18212e; --btn: #dfe6ee; --btn-ink: #0b2236; --accent: #6fbccb;
+    --dark: #020409; --dark-card: #18212e; --dark-card-ink: #e9eef4; --ghost: rgba(233, 238, 244, .05);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0c1119; --band: #121924; --ink: #e9eef4; --text: #c6cfda; --muted: #7f8c9c;
+  --line: #253041; --card: #18212e; --btn: #dfe6ee; --btn-ink: #0b2236; --accent: #6fbccb;
+  --dark: #020409; --dark-card: #18212e; --dark-card-ink: #e9eef4; --ghost: rgba(233, 238, 244, .05);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--f-jp); font-size: 15px; line-height: 2; letter-spacing: .08em;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+h1, h2, h3, p, ul, dl, dd { margin: 0; padding: 0; }
+ul { list-style: none; }
+
+.inner {
+  max-width: var(--wrap); margin-inline: auto;
+  padding-left: max(24px, env(safe-area-inset-left, 0px));
+  padding-right: max(24px, env(safe-area-inset-right, 0px));
+}
+
+/* header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.site-head { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--bg); border-bottom: 1px solid var(--line); }
+.site-head .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px 32px; flex-wrap: wrap; padding-block: 14px; max-width: 1240px; }
+.mark { font-family: var(--f-en); font-weight: 500; letter-spacing: .22em; color: var(--ink); font-size: 14px; }
+.nav { display: flex; flex-wrap: wrap; gap: 4px 28px; font-size: 12px; }
+.nav a { display: flex; flex-direction: column; line-height: 1.5; padding-block: 2px; border-bottom: 1px solid transparent; }
+.nav a span { font-family: var(--f-en); font-size: 10px; letter-spacing: .18em; color: var(--muted); }
+.nav a:hover { border-bottom-color: var(--ink); }
+.menu-btn { display: none; font: inherit; font-family: var(--f-en); font-size: 11px; letter-spacing: .2em; color: var(--ink); background: none; border: 1px solid var(--line); border-radius: 999px; padding: 6px 16px; cursor: pointer; }
+
+/* shared heading pattern */
+.label { font-family: var(--f-en); font-weight: 500; font-size: clamp(22px, 3vw, 30px); letter-spacing: .14em; color: var(--ink); line-height: 1.3; }
+.label.dot::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); margin-right: 14px; vertical-align: middle; transform: translateY(-2px); }
+.lead { font-size: clamp(18px, 2.4vw, 24px); font-weight: 500; letter-spacing: .16em; line-height: 1.8; color: var(--ink); text-wrap: balance; }
+.en { font-family: var(--f-en); color: var(--muted); letter-spacing: .12em; font-size: 13px; line-height: 1.9; }
+section { padding-block: clamp(72px, 10vw, 128px); }
+.stack { display: grid; gap: 28px; }
+
+/* hero */
+.hero { position: relative; overflow: hidden; padding-block: clamp(96px, 16vw, 200px) clamp(88px, 13vw, 168px); }
+.hero .eyebrow { font-family: var(--f-en); font-weight: 500; letter-spacing: .2em; color: var(--ink); font-size: 17px; }
+.hero h1 { font-size: clamp(40px, 8vw, 76px); font-weight: 700; letter-spacing: .14em; line-height: 1.35; color: var(--ink); margin-top: 10px; }
+.hero .role { font-size: clamp(16px, 2.2vw, 21px); font-weight: 500; letter-spacing: .18em; color: var(--ink); margin-top: 18px; }
+.hero .en { margin-top: 22px; font-size: 14px; letter-spacing: .2em; }
+.hero .ghost { position: absolute; right: 0; bottom: -.18em; font-family: var(--f-en); font-weight: 700; font-size: clamp(72px, 17vw, 230px); line-height: 1; letter-spacing: .02em; color: var(--ghost); pointer-events: none; user-select: none; white-space: nowrap; }
+/* opening text motion: each character slides up from behind a mask */
+.w { display: inline-block; white-space: nowrap; }
+.ch { display: inline-block; overflow: hidden; vertical-align: bottom; padding-block: .12em; margin-block: -.12em; }
+.ci { display: inline-block; transform: translateY(115%); transition: transform 1s cubic-bezier(.16, 1, .3, 1); transition-delay: calc(var(--d, 0ms) + var(--i) * 38ms); }
+.in .ci { transform: none; }
+.fade { transition: opacity 1.2s ease .9s, transform 1.2s cubic-bezier(.16, 1, .3, 1) .9s; }
+.fade.pre { opacity: 0; transform: translateX(6%); }
+
+.pill { display: inline-block; font-family: var(--f-en); font-weight: 500; font-size: 12px; letter-spacing: .12em; padding: 6px 20px; border-radius: 999px; background: var(--card); color: var(--ink); box-shadow: 2px 3px 6px rgba(11, 34, 54, .16); transition: transform .2s; }
+.pill:hover { transform: translateY(-2px); }
+
+/* paw prints walking up the right edge */
+.hero .inner { position: relative; z-index: 1; }
+.paws { position: absolute; top: 0; bottom: 0; right: max(16px, env(safe-area-inset-right, 0px)); width: clamp(84px, 15vw, 190px); height: 100%; fill: var(--ink); pointer-events: none; }
+.paws use { opacity: .2; }
+@media (prefers-reduced-motion: no-preference) {
+  .paws use { animation: step 8s linear infinite backwards; animation-delay: calc(.6s + var(--n) * .42s); }
+  @keyframes step { 0% { opacity: 0; } 3% { opacity: .32; } 8%, 78% { opacity: .2; } 90%, 100% { opacity: 0; } }
+}
+
+/* about */
+.about-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 4fr); gap: 48px 64px; align-items: start; }
+.about-grid p + p { margin-top: 1.2em; }
+.facts { border-top: 1px solid var(--line); }
+.facts div { display: grid; grid-template-columns: 7.5em minmax(0, 1fr); gap: 12px; padding-block: 14px; border-bottom: 1px solid var(--line); font-size: 14px; line-height: 1.8; }
+.facts dt { color: var(--muted); font-size: 12px; }
+.facts dd small { display: block; font-family: var(--f-en); color: var(--muted); font-size: 12px; }
+
+/* works: dark band */
+.works { background: var(--dark); color: var(--dark-ink); position: relative; overflow: hidden; }
+.works::before { content: ""; position: absolute; inset: 0; background:
+  repeating-linear-gradient(90deg, rgba(120, 160, 200, .07) 0 1px, transparent 1px 88px),
+  radial-gradient(60% 80% at 85% 0%, rgba(47, 127, 143, .22), transparent 70%); pointer-events: none; }
+.works .inner { position: relative; }
+.works .label { color: var(--dark-ink); font-weight: 400; }
+.works .lead { color: var(--dark-ink); font-size: clamp(16px, 2vw, 20px); }
+.works .en { color: var(--dark-muted); }
+.work-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.work { background: var(--dark-card); color: var(--dark-card-ink); padding: 28px 28px 24px; display: grid; gap: 10px; align-content: start; }
+.work h3 { font-size: 17px; font-weight: 500; letter-spacing: .12em; line-height: 1.6; }
+.work h3 small { display: block; font-family: var(--f-en); font-weight: 400; font-size: 12px; opacity: .65; }
+.work p { font-size: 13px; line-height: 1.9; }
+.work p.e { font-family: var(--f-en); opacity: .65; font-size: 12px; letter-spacing: .06em; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.tags li { font-family: var(--f-en); font-size: 11px; letter-spacing: .08em; line-height: 1; padding: 6px 10px; border: 1px solid currentColor; opacity: .7; }
+.sample { justify-self: start; font-size: 10px; letter-spacing: .14em; line-height: 1; padding: 5px 8px; background: var(--accent); color: #fff; }
+
+/* skills */
+.skill-grid { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 5fr); gap: 40px 64px; align-items: start; }
+.skill-list { display: grid; gap: 8px; }
+.skill-list li { background: var(--btn); color: var(--btn-ink); padding: 14px 20px; display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 12px; font-size: 13px; line-height: 1.7; align-items: baseline; }
+.skill-list b { font-family: var(--f-en); font-weight: 500; letter-spacing: .14em; font-size: 12px; }
+
+/* contact */
+.contact { background: var(--band); }
+.contact-rows { display: grid; gap: 8px; max-width: 640px; }
+.row { background: var(--bg); padding: 16px 20px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.row dt { font-family: var(--f-en); font-size: 11px; letter-spacing: .18em; color: var(--muted); width: 100%; line-height: 1.4; }
+.row dd { font-family: var(--f-en); font-size: 15px; letter-spacing: .06em; color: var(--ink); min-width: 0; overflow-wrap: anywhere; user-select: all; }
+.copy { font: inherit; font-family: var(--f-en); font-size: 11px; letter-spacing: .12em; padding: 6px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--card); color: var(--ink); cursor: pointer; }
+.copy:hover { border-color: var(--ink); }
+
+/* footer */
+.site-foot { background: var(--dark); color: var(--dark-ink); position: relative; overflow: hidden; }
+.site-foot .inner { padding-block: 48px 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px; border-top: 1px solid rgba(255, 255, 255, .18); margin-top: 32px; position: relative; }
+.site-foot ul { display: flex; flex-wrap: wrap; gap: 6px 28px; font-size: 12px; }
+.site-foot small { font-family: var(--f-en); font-size: 10px; letter-spacing: .2em; color: var(--dark-muted); }
+
+@media (max-width: 760px) {
+  .about-grid, .skill-grid, .work-grid { grid-template-columns: minmax(0, 1fr); }
+  .menu-btn { display: inline-block; }
+  .nav { display: none; width: 100%; flex-direction: column; gap: 0; padding-bottom: 6px; }
+  .nav.open { display: flex; }
+  .nav a { flex-direction: row; align-items: baseline; justify-content: space-between; padding-block: 12px; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .nav a:last-child { border-bottom-color: transparent; }
+  body { font-size: 14px; letter-spacing: .06em; }
+  .hero h1 { letter-spacing: .1em; }
+  .work { padding: 22px 20px 20px; }
+  .facts div { grid-template-columns: 6.5em minmax(0, 1fr); }
+  .row { padding: 14px 16px; }
+  .site-foot .inner { flex-direction: column; }
+}
+@media (max-width: 420px) {
+  .inner { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+  .lead { letter-spacing: .1em; }
+  .skill-list li { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+</style>
+</head>
+<body>
+<header class="site-head">
+  <div class="inner">
+    <a class="mark" href="#top">HITOMI KUROSAKI</a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">MENU</button>
+    <nav class="nav" id="nav" aria-label="メインメニュー">
+      <a href="#about">自己紹介<span>ABOUT</span></a>
+      <a href="#works">実績・作品<span>WORKS</span></a>
+      <a href="#skills">スキル<span>SKILLS</span></a>
+      <a href="#contact">連絡先<span>CONTACT</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="inner">
+      <p class="eyebrow" data-split data-now>PORTFOLIO</p>
+      <h1 data-split data-now data-d="150">黒﨑 日都美</h1>
+      <p class="role" data-split data-now data-d="450">システムエンジニア</p>
+      <p class="en" data-split data-now data-d="700">Hitomi Kurosaki<br>Systems Engineer</p>
+    </div>
+    <svg class="paws" viewBox="0 0 200 520" preserveAspectRatio="xMaxYMid meet" aria-hidden="true">
+      <defs><g id="paw">
+        <path d="M0 5 C-10 5 -18 13 -18 21 C-18 29 -10 31 0 28 C10 31 18 29 18 21 C18 13 10 5 0 5 Z"/>
+        <ellipse cx="-18" cy="-4" rx="5.5" ry="7.5" transform="rotate(-24 -18 -4)"/>
+        <ellipse cx="-6.5" cy="-14" rx="5.5" ry="8" transform="rotate(-8 -6.5 -14)"/>
+        <ellipse cx="6.5" cy="-14" rx="5.5" ry="8" transform="rotate(8 6.5 -14)"/>
+        <ellipse cx="18" cy="-4" rx="5.5" ry="7.5" transform="rotate(24 18 -4)"/>
+      </g></defs>
+      <use href="#paw" transform="translate(115 478) rotate(-15)" style="--n:0"/>
+      <use href="#paw" transform="translate(144 410) rotate(-1)" style="--n:1"/>
+      <use href="#paw" transform="translate(105 342) rotate(-15)" style="--n:2"/>
+      <use href="#paw" transform="translate(134 274) rotate(-1)" style="--n:3"/>
+      <use href="#paw" transform="translate(95 206) rotate(-15)" style="--n:4"/>
+      <use href="#paw" transform="translate(124 138) rotate(-1)" style="--n:5"/>
+      <use href="#paw" transform="translate(85 70) rotate(-15)" style="--n:6"/>
+    </svg>
+    <div class="ghost fade" aria-hidden="true">KUROSAKI</div>
+  </section>
+
+  <section id="about">
+    <div class="inner stack">
+      <h2 class="label" data-split>ABOUT</h2>
+      <div class="about-grid">
+        <div class="stack">
+          <p class="lead">使う人の仕事が、<br>少し楽になる仕組みをつくる。</p>
+          <p class="en">Building systems that make everyday work a little easier for the people who use them.</p>
+          <div>
+            <p>システムエンジニアの黒﨑日都美です。要件の整理から設計・開発・テスト・運用まで、システムづくりの一連の工程に携わっています。</p>
+            <p class="en">I'm Hitomi Kurosaki, a systems engineer working across the full cycle: requirements, design, development, testing and operations.</p>
+          </div>
+          <div><a class="pill" href="#works">Works</a></div>
+        </div>
+        <dl class="facts">
+          <div><dt>名前 / Name</dt><dd>黒﨑 日都美<small>Hitomi Kurosaki</small></dd></div>
+          <div><dt>職種 / Role</dt><dd>システムエンジニア(SE)<small>Systems Engineer</small></dd></div>
+          <div><dt>拠点 / Base</dt><dd>(記入予定)<small>To be added</small></dd></div>
+          <div><dt>経験 / Experience</dt><dd>(記入予定)<small>To be added</small></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="works" class="works">
+    <div class="inner stack">
+      <h2 class="label dot" data-split>WORKS</h2>
+      <div>
+        <p class="lead">これまでに携わったプロジェクトと制作物</p>
+        <p class="en">Projects and things I have built</p>
+      </div>
+      <div class="work-grid">
+        <article class="work">
+          <span class="sample">サンプル / SAMPLE</span>
+          <h3>業務システムの開発<small>Business system development</small></h3>
+          <p>担当した工程、チームの規模、成果をここに書きます。</p>
+          <p class="e">Describe your role, team size and outcome here.</p>
+          <ul class="tags"><li>Java</li><li>SQL</li></ul>
+        </article>
+        <article class="work">
+          <span class="sample">サンプル / SAMPLE</span>
+          <h3>Webアプリケーション<small>Web application</small></h3>
+          <p>どんな課題をどう解決したかをここに書きます。</p>
+          <p class="e">Describe the problem and how you solved it.</p>
+          <ul class="tags"><li>TypeScript</li><li>React</li></ul>
+        </article>
+        <article class="work">
+          <span class="sample">サンプル / SAMPLE</span>
+          <h3>業務の自動化ツール<small>Automation tooling</small></h3>
+          <p>削減できた作業時間などの効果をここに書きます。</p>
+          <p class="e">Describe the effect, such as hours saved.</p>
+          <ul class="tags"><li>Python</li></ul>
+        </article>
+        <article class="work">
+          <span class="sample">サンプル / SAMPLE</span>
+          <h3>個人制作<small>Personal project</small></h3>
+          <p>このポートフォリオサイトなど、個人で作ったものをここに書きます。</p>
+          <p class="e">Personal work, such as this portfolio site.</p>
+          <ul class="tags"><li>HTML</li><li>CSS</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="inner stack">
+      <h2 class="label" data-split>SKILLS</h2>
+      <div class="skill-grid">
+        <div class="stack">
+          <p class="lead">設計から運用まで、<br>一貫して担当できます。</p>
+          <p class="en">From design through operations, end to end.</p>
+          <p style="font-size:12px;color:var(--muted)">※ 下の内容はサンプルです。実際のスキルに差し替えます。<br><span class="en" style="font-size:12px">The items listed are samples and will be replaced.</span></p>
+        </div>
+        <ul class="skill-list">
+          <li><b>LANGUAGES</b><span>Java / Python / JavaScript / SQL</span></li>
+          <li><b>FRAMEWORKS</b><span>Spring Boot / React</span></li>
+          <li><b>DATABASE</b><span>PostgreSQL / MySQL / Oracle</span></li>
+          <li><b>INFRA &amp; TOOLS</b><span>AWS / Linux / Docker / Git</span></li>
+          <li><b>PROCESS</b><span>要件定義・基本設計・詳細設計・テスト・運用保守</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="inner stack">
+      <h2 class="label" data-split>CONTACT</h2>
+      <div>
+        <p class="lead">お気軽にご連絡ください。</p>
+        <p class="en">Feel free to get in touch.</p>
+      </div>
+      <dl class="contact-rows">
+        <div class="row"><dt>EMAIL</dt><dd id="mail">your-name@example.com</dd><button class="copy" id="copy-mail" type="button" data-target="mail">Copy</button></div>
+        <div class="row"><dt>GITHUB</dt><dd id="gh">github.com/your-account</dd><button class="copy" id="copy-gh" type="button" data-target="gh">Copy</button></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="inner">
+    <ul>
+      <li><a href="#about">自己紹介</a></li>
+      <li><a href="#works">実績・作品</a></li>
+      <li><a href="#skills">スキル</a></li>
+      <li><a href="#contact">連絡先</a></li>
+    </ul>
+    <small>© 2026 HITOMI KUROSAKI</small>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var btn = document.getElementById('menu-btn'), nav = document.getElementById('nav');
+  var setOpen = function (o) { nav.classList.toggle('open', o); btn.setAttribute('aria-expanded', o); btn.textContent = o ? 'CLOSE' : 'MENU'; };
+  btn.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var els = [].slice.call(document.querySelectorAll('[data-split]'));
+  els.forEach(function (el) {
+    var i = 0, label = el.textContent;
+    [].slice.call(el.childNodes).forEach(function (n) {
+      if (n.nodeType !== 3) return;
+      var frag = document.createDocumentFragment();
+      n.textContent.split(/(\s+)/).forEach(function (word) {
+        if (!word) return;
+        if (/^\s+$/.test(word)) { frag.appendChild(document.createTextNode(' ')); return; }
+        var w = document.createElement('span'); w.className = 'w';
+        Array.from(word).forEach(function (c) {
+          var ch = document.createElement('span'); ch.className = 'ch';
+          var ci = document.createElement('span'); ci.className = 'ci'; ci.textContent = c; ci.style.setProperty('--i', i++);
+          ch.appendChild(ci); w.appendChild(ch);
+        });
+        frag.appendChild(w);
+      });
+      el.replaceChild(frag, n);
+    });
+    el.setAttribute('aria-label', label);
+    if (el.dataset.d) el.style.setProperty('--d', el.dataset.d + 'ms');
+  });
+  var ghost = document.querySelector('.fade'); if (ghost) ghost.classList.add('pre');
+  var show = function (el) { el.classList.add('in'); };
+  requestAnimationFrame(function () { requestAnimationFrame(function () {
+    els.filter(function (e) { return 'now' in e.dataset; }).forEach(show);
+    if (ghost) ghost.classList.remove('pre');
+  }); });
+  var rest = els.filter(function (e) { return !('now' in e.dataset); });
+  if (!('IntersectionObserver' in window)) { rest.forEach(show); return; }
+  var io = new IntersectionObserver(function (ents) { ents.forEach(function (en) { if (en.isIntersecting) { show(en.target); io.unobserve(en.target); } }); }, { rootMargin: '0px 0px -10% 0px' });
+  rest.forEach(function (e) { io.observe(e); });
+})();
+document.querySelectorAll('.copy').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var el = document.getElementById(btn.dataset.target);
+    var done = function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1600); };
+    var select = function () { var r = document.createRange(); r.selectNodeContents(el); var s = getSelection(); s.removeAllRanges(); s.addRange(r); };
+    try { navigator.clipboard.writeText(el.textContent).then(done, select); } catch (e) { select(); }
+  });
+});
+</script>
+</body>
+</html>
